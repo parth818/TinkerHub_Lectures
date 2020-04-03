@@ -1,0 +1,85 @@
+import 'dart:io';
+  
+class TandM{
+ 
+  
+  
+  var stacks = new List(10);
+  var person = new List(10);
+  var pm = new List(10);
+  var at = new List(10);
+  int scount = 0;
+  int pcount = 0;
+  
+  void addStacks(){
+    String choice = 'y';
+    while(choice == 'y' && scount <10){
+    print("Want to add Stacks ? (y/n)");
+    choice = stdin.readLineSync();
+    choice = choice.toLowerCase();
+    choice = choice.trim();
+    if(choice!='y' || choice!='n'){
+      print("invalid option");
+      continue;}
+    print("Enter Stack name : ");
+    stacks[scount] = stdin.readLineSync();
+    scount++;
+    }
+  }
+  
+  void setMentorOrLearner(){
+    String choice = 'y';
+    while(choice == 'y' && pcount <10){
+    print("Want to add Persons ? (y/n)");
+    choice = stdin.readLineSync();
+    choice = choice.toLowerCase();
+    choice = choice.trim();
+    if(choice!='y' || choice!='n'){
+      print("invalid option");
+      continue;}
+    print("Enter Person name : ");
+    person[pcount] = stdin.readLineSync();
+    print("Enter designation (Mentor / Learner ) ?");
+    String dchoice;
+    dchoice = stdin.readLineSync();
+    dchoice = choice.toLowerCase();
+    dchoice = choice.trim();
+     if(dchoice!='mentor' || choice!='learner'){
+      print("invalid option");
+      continue;}
+    pm[pcount] = dchoice;
+    pcount++; 
+    }
+  }
+  void setAvailableTime(){
+    int i = 0;
+    for(i = 0;i<10;i++){
+      if(pm[i] == 'mentor')
+      {print("Set availaible time for this Mentor in minutes = ");
+       int temp = stdin.readByteSync();
+      at[i] = temp;}
+    }
+  }
+  
+  void getMentor(){
+    print("Enter stack to be searched for : ");
+    String temp = stdin.readLineSync();
+    int i  = 0;
+    for(i = 0;i<10;i++){
+      if(stacks[i] == temp){
+        print("Enter time duration = ");
+        int time = stdin.readByteSync();
+        int j = 0;
+        for(j = 0;j<10;j++){
+          if(at[j]>time){
+          print("Mentor Availaible = $person[j]");
+          }      
+      }
+    }  
+  }
+ }
+}
+
+void main(){
+}
+
